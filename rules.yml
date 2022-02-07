@@ -1,0 +1,9 @@
+groups:
+- name: example
+  rules:
+  - alert: InstanceDown
+	expr: up == 0
+	labels:
+	  severity: critical
+	annotations:
+	  summary: Instance is down

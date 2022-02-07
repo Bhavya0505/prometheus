@@ -1,0 +1,26 @@
+global:
+  scrape_interval: 10s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets: ['alertmanager:9093']
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  - 'rules.yml'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'node_exporter_metrics'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['ip of server:9100']
+  - job_name: 'node_exporter_metrics for slaves'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.17:9100']
+
